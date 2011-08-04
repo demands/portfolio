@@ -34,10 +34,10 @@
 	
 	<link rel="canonical" href="/">
 
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- end CSS-->
 
-
-  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">
   <script type="text/javascript" src="http://use.typekit.com/mvo2bzs.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <script src="js/libs/modernizr-1.7.min.js"></script>
@@ -294,11 +294,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
   <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
   
-  <!-- Some jQuery plugins -->
-  <script src='js/mylibs/jquery.scrollTo-min.js'></script>
-  <script src='js/mylibs/jquery.isotope.min.js'></script>
-
   <!-- scripts concatenated and minified via ant build script-->
+  <script src='js/mylibs/jquery.scrollTo.js'></script>
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
   <!-- end scripts-->

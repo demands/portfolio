@@ -8,16 +8,6 @@ var _ME_ = {};
 	 * Depending on browser width, this page may appear
 	 * differently. Here, we publish a notification every
 	 * time the width changes to a specific configuration.
-	 * Here's an example of how to subscribe to that:
-	 * 
-	 * _ME_.width.subscribe({
-	 *   type: 'widthStop', // or 'height' or 'width'
-	 *   callback: function(widthStop, width, height),
-	 *   widthStop: _ME_.dim.MOBILE // optional, but if this is
-	 *			// set, the callback is only called when width
-	 *			// is in this range. This can also be an array of
-	 * 			// width stops.
-	 * });
 	 */
 	
 	me.dim = {
@@ -116,7 +106,7 @@ var _ME_ = {};
 				// have just entered a new widthstop.
 				if((subscriber.type === 'width' && !changedWidth) ||
 						(subscriber.type === 'widthStop' && !changedWidth) ||
-						(subscriber.type === 'height' && !changedHeight && old == set)) {
+						(subscriber.type === 'height' && !changedHeight && old === set)) {
 					continue;
 				}
 				
@@ -131,7 +121,7 @@ var _ME_ = {};
 				
 				// Call 'width', 'height', and 'dim' events
 				if((subscriber.type === 'height' || subscriber.type === 'width' || subscriber.type === 'dim') &&
-				 	 (subscriber.widthStop === set || subscriber.widthStop === _undefined)) {
+            (subscriber.widthStop === set || subscriber.widthStop === _undefined)) {
 					subscriber.callback.call(subscriber.context, set, newWidth, newHeight);
 				}
 			}
@@ -174,7 +164,7 @@ var _ME_ = {};
     Section: function(dom) {
       if(!(this instanceof me.sections.Section)) {
         return new me.sections.Section(dom);
-      };
+      }
       
       this.dom = dom;
       this.setLink();
@@ -239,22 +229,22 @@ var _ME_ = {};
       event.preventDefault();
       section.focus();
     });
-  }
+  };
 
   /* Set the minimum height of each section to the height of the browser window */
   Section.prototype.fixHeight = function(widthStop, width, height) {
     $(this.dom).css('min-height', height);
-  }
+  };
 
   /* Make the minimum height of each section fluid */
   Section.prototype.resetHeight = function() {
     $(this.dom).css('min-height', '');
-  }
+  };
 
   /* Focus on a section */
   Section.prototype.focus = function() {
     $.scrollTo(this.dom, 500);
-  }
+  };
 
 
 })(_ME_, jQuery);
@@ -271,7 +261,7 @@ var _ME_ = {};
     Article: function(dom) {
       if(!(this instanceof me.portfolio.Article)) {
         return new me.portfolio.Article(dom);
-      };
+      }
 
       this.dom = dom;
     },
@@ -280,217 +270,11 @@ var _ME_ = {};
       var a = new me.portfolio.Article($('#portfolio'));
       me.portfolio.dom = $('#portfolio');
     }
-  }
+  };
 
   Article = me.portfolio.Article;
   
 })(_ME_, jQuery);
-
-/* Old sections code. */
-(function(undefined) {
-	var oldHighlight,
-			articleContainer = $('article').parent(),
-			body = $('body');
-	
-	$('article:not(.highlight)').live('click', function(event) {
-		
-		var i, // iterator
-		
-				// the current location of the clicked article in relation to the other articles
-				currentIndex,
-				
-				// dimensions of a normal article and of the clicked article, when it is done
-				smallArticleDimensions, clickedArticleDimensions, articleMargins, numCols, overallOffset,
-				
-				// where the clicked article needs to go and what it needs to replace
-				destinationReferenceIndex, destinationReference,
-		
-				// caching results of the following calls to save time
-				articles = $('article'),
-				size = articles.size(),
-				target = $(event.currentTarget);
-		
-    // Quit if we are mobile-sized, because then everything will be showing.
-    if($(window).width() < 590) {
-      return;
-    }
-
-		// Add higlighting class to body
-		body.addClass('highlighting');
-		
-		// get dimensions
-		(function() {
-			var smallArticles = articles.not('.highlight'),
-					size = smallArticles.size(),
-					clone = target.clone();
-
-			smallArticleDimensions = {
-				height: smallArticles.css('height'),
-				width: smallArticles.css('width')
-			};
-			
-			overallOffset = $(articles.get(0)).position();
-			
-			// get number of columns and distance between blocks
-			(function() {
-				var previousPosition = $(smallArticles.get(0)).position(),
-						comparePosition = function(position) {
-							if(position.top !== previousPosition.top) {
-								articleMargins.y = position.top - (previousPosition.top + parseInt(smallArticleDimensions.height));
-								return false;
-							}
-							else {
-								++numCols;
-								if(articleMargins.x === undefined) {
-									articleMargins.x = position.left - (previousPosition.left + parseInt(smallArticleDimensions.width));
-								}
-								return true;
-							}
-						};
-				
-				articleMargins = new Object();
-				numCols = 1;
-				// loop rather than each() because this way order is guaranteed
-				for(i = 1; i < size; i++) {
-					if(!comparePosition($(smallArticles.get(i)).position())) {
-						break;
-					}
-				}
-			})();
-
-			// Emulate completed clicked article
-			clone.css('visibility', 'hidden').addClass('highlight').appendTo(target.parent());
-			clickedArticleDimensions = {
-				height: clone.height(),
-				width: clone.width()
-			};
-			clone.remove();
-		})();
-		
-		// Get current index and prepare all elements for absolute positioning.
-		// Loop rather than each() because this way order is guaranteed
-		for(i = 0; i < size; i++) {
-			(function(article) {
-				var jqArticle = $(article),
-						offset = jqArticle.offset();
-				
-				// Figure out what index this article is at
-				if(article === event.currentTarget) {
-					currentIndex = i;
-				}
-				
-				// Set position absolutely
-				jqArticle.css('top', offset.top);
-				jqArticle.css('left', offset.left);
-				jqArticle.css('width', jqArticle.css('width'));
-			})(articles.get(i));
-		}
-		
-		// Absolutely position all elements and keep the scrollbar where it is
-		articleContainer.css('height', articleContainer.height()).addClass('animating');
-		
-		// Figure out where this article needs to end up
-		// (element number must be divisible by 2 and 3 since layout can be between 1 - 3 columns)
-		destinationReferenceIndex = Math.round(currentIndex / 6) * 6;
-		if(destinationReferenceIndex >= articles.size()) {
-			destinationReferenceIndex -= 6;
-		}
-				
-		// Move clicked element to correct place in DOM
-		if(destinationReferenceIndex !== currentIndex) {
-			if(destinationReferenceIndex < currentIndex) {
-				$(articles.get(destinationReferenceIndex)).before(target);
-			}
-			else {
-				$(articles.get(destinationReferenceIndex)).after(target);
-			}
-		}
-		
-		// Start animating all elements
-		(function() {
-			var animationCount = 0;
-			
-			for(i = 0; i < size; i++) {
-				(function(article) {
-					var destinationCss = {
-																	'height': smallArticleDimensions.height,
-																	'width': smallArticleDimensions.width
-																},
-							placeX = function(column) {
-													return (column * (parseInt(smallArticleDimensions.width) + articleMargins.x)) + overallOffset.left;
-												},
-							placeY = function(row, belowHighlight) {
-													if(belowHighlight) {
-														return ((row-1) * (parseInt(smallArticleDimensions.height) + articleMargins.y) + overallOffset.top + parseInt(clickedArticleDimensions.height) + articleMargins.y);
-													}
-													else {
-														return (row * (parseInt(smallArticleDimensions.height) + articleMargins.y) + overallOffset.top);
-													}
-												};
-
-					if (i === currentIndex) {
-						// this article has to move to the location of the destination index
-						destinationCss.top = placeY(Math.floor(destinationReferenceIndex / numCols), false);
-						destinationCss.left = overallOffset.left;
-						destinationCss.height = clickedArticleDimensions.height;
-						destinationCss.width = clickedArticleDimensions.width;
-						
-						// Scroll to element
-						if(($(window).scrollTop() + $(window).height()) < (destinationCss.top + destinationCss.height)
-								|| $(window).scrollTop() > destinationCss.top) {
-							
-							$.scrollTo(Math.max(0, destinationCss.top - (($(window).height() - destinationCss.height)/2)), 500);		
-						}
-					}
-					else if (i < currentIndex && i < destinationReferenceIndex) {
-						// keep this article where it is.
-						destinationCss.top = placeY(Math.floor(i / numCols), false);
-						destinationCss.left = placeX(i % numCols);
-					}
-					else if (i < currentIndex && i >= destinationReferenceIndex) {
-						destinationCss.top = placeY(Math.floor(i / numCols)+1, true);
-						destinationCss.left = placeX(i % numCols);
-					}
-					else if(i > currentIndex && i <= destinationReferenceIndex) {
-						destinationCss.top = placeY(Math.floor((i-1) / numCols), false);
-						destinationCss.left = placeX((i-1) % numCols);
-					}
-					else { // i > currentIndex && i > destinationReferenceIndex
-						destinationCss.top = placeY(Math.floor((i-1) / numCols)+1, true);
-						destinationCss.left = placeX((i-1) % numCols);
-					}
-					
-					++animationCount;
-					article.animate(destinationCss, {
-						'complete': function() {
-							--animationCount;
-							if(animationCount === 0) {
-								// Relatively position all elements
-								articles.css({
-									'top': '',
-									'left': '',
-									'height': '',
-									'width': ''
-								});
-								
-								// Remove animating class & reset height
-								articleContainer.removeClass('animating').css('height', '');
-								
-								// Remove highlight class
-								$(oldHighlight).removeClass('highlight');
-								oldHighlight = target;
-							}
-						}
-					});
-				})($(articles.get(i)));
-			}
-		})();
-		
-		// Add highlight class
-		target.addClass('highlight');
-		
-	});
-})();
 
 /* This function kicks everything off. */
 (function(me, $) {

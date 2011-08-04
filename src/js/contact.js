@@ -10,7 +10,7 @@
     var successResponse = function(data, textStatus, xhr) {
       var response = $('<p>', {
                       id: 'form-response',
-                      class: 'response'
+                      'class': 'response'
                     });
       $.each(data.details, function(index, value) {
         response.addClass('response-' + value);

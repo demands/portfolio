@@ -483,7 +483,7 @@
     <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
         <mkdir dir="./${dir.intermediate}/${dir.js.mylibs}"/>
 
-        <echo message="Concatenating JS libraries"/>
+        <echo message="Concatenating JS libraries in ${dir.js.mylibs}"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
@@ -527,7 +527,6 @@
             <fileset dir="${dir.source}/" >
                 <include name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.js}/**/*.min.js"/>
-                <exclude name="${dir.js.mylibs}/**/*.js"/>
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
