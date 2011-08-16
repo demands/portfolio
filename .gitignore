@@ -2,3 +2,4 @@
 *.swp
 .htaccess
 logs/*
+intermediate/*

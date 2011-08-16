@@ -129,7 +129,7 @@ body {
 #container > header {
   width: 100%;
   position: absolute;
-  height: 10em;
+  height: 12em;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -183,9 +183,12 @@ body {
 #container > header nav {
   float: right;
   text-align: right;
-  font-size: 116%;
+  font-size: 133%;
   padding: 10px;
-  font-weight: bold;
+}
+
+#container > header nav a:hover {
+  color: #f00;
 }
 
 #container > section {
@@ -213,13 +216,14 @@ body {
 
 #about-me {
 	background: url(../img/about_bg/letchworth.jpg) center bottom no-repeat;
-  padding-top: 10em;
+  padding-top: 11em;
   max-height: 430px;
   overflow: hidden;
 }
 
 #about-me .speech-bubble {
   padding-bottom: 40px;
+  padding-top: 0.5em;
 	background: transparent url(../img/speechbubbledown.png) center bottom no-repeat;
   max-width: 454px;
   margin: 0 auto;
@@ -229,6 +233,7 @@ body {
 	background: url(../img/crosshatch.gif);
 	padding-left: 15px;
 	padding-right: 15px;
+  line-height: 1.4em;
 }
 
 #about-me h1 {
@@ -238,6 +243,7 @@ body {
 
 #about-me p {
 	padding-bottom: 10px;
+  font-size: 130%;
 }
 
 #about-me p:last-child {
