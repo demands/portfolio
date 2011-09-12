@@ -18,18 +18,15 @@ if(_ME_ === undefined) var _ME_ = {};
       this.dom = dom;
       this.setLink();
 
+      // Min height of any section is height of browser
 			me.dim.subscribe({
 				type: 'height',
-				widthStop: [me.dim.WIDE, me.dim.NARROW],
-				callback: this.fixHeight,
+				callback: function(widthStop, width, height) {
+          this.fixHeight(height);
+        },
         context: this
 			});
-			me.dim.subscribe({
-				type: 'widthStop',
-				widthStop: me.dim.MOBILE,
-				callback: this.resetHeight,
-        context: this
-			});
+
     },
 
     /* Figure out the current section, and focus on it. */
@@ -49,13 +46,31 @@ if(_ME_ === undefined) var _ME_ = {};
       console.log(event);
     },
 
+    /* Add a new section to our list of sections */
+    addNew: function(domSection) {
+      var id = domSection.attr('id');
+      var section = undefined;
+      
+      // If this section comes with some extra features,
+      // they will be defined by _ME_.section.<section-id>().
+      if(typeof me.section === 'object' &&
+         typeof me.section[id] === 'function') {
+        section = me.section[id](domSection);
+      }
+      else {
+        section = new Section(domSection);
+      }
+
+      me.sections.sections.push(section);
+    },
+
     /* Make everything work */
 		initialize: function() {
       var sections = me.sections;
 
       // Initialize all the individual sections.
       sections.dom.each(function() {
-        sections.sections.push(new Section(this));
+        sections.addNew($(this));
       });
 
       me.dim.subscribe({
@@ -81,13 +96,8 @@ if(_ME_ === undefined) var _ME_ = {};
   };
 
   /* Set the minimum height of each section to the height of the browser window */
-  Section.prototype.fixHeight = function(widthStop, width, height) {
+  Section.prototype.fixHeight = function(height) {
     $(this.dom).css('min-height', height);
-  };
-
-  /* Make the minimum height of each section fluid */
-  Section.prototype.resetHeight = function() {
-    $(this.dom).css('min-height', '');
   };
 
   /* Focus on a section */

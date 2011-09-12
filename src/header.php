@@ -72,8 +72,8 @@
         </hgroup>
         <nav>
           <ul>
-            <li id='about-me-link'>
-              <a href="index.php" class="about-me-link">
+            <li id='about_me-link'>
+              <a href="index.php" class="about_me-link">
                 <span class="title">About me.</span>
               </a>
             </li>

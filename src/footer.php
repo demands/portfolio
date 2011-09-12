@@ -11,8 +11,7 @@
   <script src="js/plugins.js"></script>
   <script src="js/dim.js"></script>
   <script src="js/sections.js"></script>
-  <script src="js/header.js"></script>
-  <script src="js/portfolio.js"></script>
+  <script src="js/about_me.js"></script>
   <script src="js/initialize.js"></script>
   <!-- end scripts-->
 

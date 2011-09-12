@@ -219,49 +219,51 @@ body {
 	font-weight: 100;
 }
 
-#about-me {
-	background: url(../img/about_bg/letchworth.jpg) center bottom no-repeat;
+#about_me {
+  background: url(../img/about_bg/letchworth.jpg) center bottom no-repeat;
   padding-top: 11em;
-  max-height: 430px;
   overflow: hidden;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
-#about-me .speech-bubble {
+#about_me .speech-bubble {
   padding-bottom: 40px;
   padding-top: 0.5em;
-	background: transparent url(../img/speechbubbledown.png) center bottom no-repeat;
+  background: transparent url(../img/speechbubbledown.png) center bottom no-repeat;
   max-width: 454px;
   margin: 0 auto;
 }
 
-#about-me .speech-bubble > * {
-	background: #ededed url(../img/crosshatch.gif);
-	padding-left: 15px;
-	padding-right: 15px;
+#about_me .speech-bubble > * {
+  background: #ededed url(../img/crosshatch.gif);
+  padding-left: 15px;
+  padding-right: 15px;
   line-height: 1.4em;
 }
 
-#about-me h1 {
-	padding-top: 10px;
-	padding-bottom: 10px;
+#about_me h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-#about-me p {
-	padding-bottom: 10px;
+#about_me p {
+  padding-bottom: 10px;
   font-size: 130%;
 }
 
-#about-me p:last-child {
-	padding-bottom: 20px;
+#about_me p:last-child {
+  padding-bottom: 20px;
 }
 
-#about-me #portrait {
-	padding-top: 20px;
+#about_me #portrait {
+  padding-top: 20px;
   width: 219px;
   margin: 0 auto;
 }
 
-#about-me #portrait img {
+#about_me #portrait img {
   display: block;
 }
 
@@ -373,6 +375,10 @@ body {
 	padding: 5%;
 	margin: 10px 0;
 	min-height: 200px;
+}
+
+#contact form label {
+	
 }
 
 #contact form input {
