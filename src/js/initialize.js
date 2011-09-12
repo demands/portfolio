@@ -1,5 +1,5 @@
 /* First, create a namespace. */
-var _ME_ = {};
+if(_ME_ === undefined) var _ME_ = {};
 
 /* This function kicks everything off. */
 (function(me, $) {

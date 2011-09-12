@@ -1,4 +1,7 @@
-/* @override http://projects.maxedmands.com/new/css/style.css?v=2 */
+/* @override 
+	http://projects.maxedmands.com/new/css/style.css?v=2
+	http://maxedmands.dev/css/style.css
+*/
 
 /* @group Rules Reset! */
 
@@ -211,7 +214,9 @@ body {
 }
 
 #container > section hgroup h2 {
-	font-size: 111%;
+	margin-top: 0.5em;
+	font-size: 140%;
+	font-weight: 100;
 }
 
 #about-me {
@@ -230,7 +235,7 @@ body {
 }
 
 #about-me .speech-bubble > * {
-	background: url(../img/crosshatch.gif);
+	background: #ededed url(../img/crosshatch.gif);
 	padding-left: 15px;
 	padding-right: 15px;
   line-height: 1.4em;
@@ -279,8 +284,15 @@ body {
 	margin: 15px 0;
 }
 
+#portfolio article h2 {
+	font-weight: 100;
+	font-size: 300%;
+}
+
 #portfolio article section {
 	margin: 15px 0;
+	font-size: 125%;
+	line-height: 1.3em;
 }
 
 #portfolio article .images img {
@@ -375,7 +387,8 @@ body {
 
 @media only screen and (min-width: 590px) {
 
-  
+
+
 }
 
 @media print {
