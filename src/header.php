@@ -87,11 +87,6 @@
                 <span class="title">Essays.</span>
               </a>
             </li>
-            <li id='projects-link'>
-              <a href="projects.php">
-                <span class="title">Projects.</span>
-              </a>
-            </li>
             <li id='contact-link'>
               <a href="contact.php" class="contact-link">
                 <span class="title">Contact.</span>
