@@ -132,14 +132,12 @@ body {
 #container > header {
   width: 100%;
   position: absolute;
-  height: 12em;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 #container > header .wrap {
-  padding: 15px;
-  background: url(../img/crosshatch-dark.gif);
+  padding: 1em 15px;
+  background: url(../img/crosshatch-dark.png);
   max-width: 424px;
   margin: 0 auto;
 }
@@ -167,20 +165,18 @@ body {
 #container > header hgroup a {
   display: block;
   float: left;
-  width: 150px;
-  position: relative;
-  padding: 15px 0;
 }
 
 #container > header hgroup h1 {
-  margin-top: 41px;
-  line-height: 1em;
+  text-transform: lowercase;
+  text-indent: -999em;
+  background: transparent url(../img/name-and-fish.png) left top no-repeat;
+  width: 153px;
+  height: 110px;
 }
 
-#container > header hgroup img {
-  position: absolute;
-  top: 0;
-  right: 32px;
+#container > header hgroup a:hover h1 {
+  background-position: left -110px;
 }
 
 #container > header nav {
@@ -196,6 +192,7 @@ body {
 
 #container > section {
   clear: both;
+  padding-top: 11em;
 }
 
 #container > section:after {
@@ -221,7 +218,6 @@ body {
 
 #about_me {
   background: url(../img/about_bg/letchworth.jpg) center bottom no-repeat;
-  padding-top: 11em;
   overflow: hidden;
   box-sizing: border-box;
   -moz-box-sizing: border-box;

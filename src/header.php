@@ -67,7 +67,6 @@
         <hgroup>
           <a href="/" id="home-link">
             <h1>Max Edmands</h1>
-            <img src="img/fish.gif" alt="My 'flying fish' logo.">
           </a>
         </hgroup>
         <nav>
