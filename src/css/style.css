@@ -176,18 +176,43 @@ body {
 }
 
 #container > header hgroup a:hover h1 {
-  background-position: left -110px;
+  margin-left: 2px;
 }
 
 #container > header nav {
   float: right;
-  text-align: right;
   font-size: 133%;
   padding: 10px;
 }
 
+#container > header nav a {
+  background: transparent url(../img/links.png) left top no-repeat;
+  text-indent: -999em;
+  display: block;
+  width: 96px;
+  height: 24px;
+  overflow: hidden;
+  margin-left: auto;
+}
+
 #container > header nav a:hover {
-  color: #f00;
+  margin-right: 2px;
+}
+
+#container > header nav a:active {
+  margin-right: 4px;
+}
+
+#container nav .portfolio-link {
+  background-position: 0 -28px;
+}
+
+#container nav .essays-link {
+  background-position: 0 -60px;
+}
+
+#container nav .contact-link {
+  background-position: 0 -91px;
 }
 
 #container > section {

@@ -73,22 +73,22 @@
           <ul>
             <li id='about_me-link'>
               <a href="index.php" class="about_me-link">
-                <span class="title">About me.</span>
+                About me.
               </a>
             </li>
 	    <li id='portfolio-link'>
               <a href="portfolio.php" class="portfolio-link">
-                <span class="title">Portfolio.</span>
+                Portfolio.
               </a>
             </li>
             <li id='essays-link'>
               <a href="essays.php" class="essays-link">
-                <span class="title">Essays.</span>
+                Essays.
               </a>
             </li>
             <li id='contact-link'>
               <a href="contact.php" class="contact-link">
-                <span class="title">Contact.</span>
+                Contact.
               </a>
             </li>
           </ul>
