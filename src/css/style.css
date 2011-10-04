@@ -218,6 +218,8 @@ body {
 #container > section {
   clear: both;
   padding-top: 11em;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 #container > section:after {
@@ -290,12 +292,14 @@ body {
 
 #portfolio {
 	background: url(../img/bg3.png) left top repeat-x;
+  padding-bottom: 15px;
 }
 
 #portfolio article {
-	margin: 15px;
-	padding-bottom: 5px;
+	margin: 15px auto;
+	padding: 5px 15px;
 	border-bottom: 1px solid #ccc;
+  max-width: 500px;
 }
 
 #portfolio article:last-child {
@@ -327,18 +331,30 @@ body {
 	padding-bottom: 15px;
 }
 
+#essays .content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 #essays article.spotlight {
 	padding: 15px;
 	position: relative;
 }
 
-#essays article.spotlight img {
-	width: 100%;
-}
-
 #essays article.spotlight a {
 	color: white;
 	text-decoration: none;
+  height: 330px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+#essays article.spotlight img {
+	width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 #essays article.spotlight hgroup {
@@ -352,34 +368,33 @@ body {
 	border: none;
 }
 
-#essays > section {
-	margin: 0 15px;
+#essays section h1 {
+  font-size: 120%;
+  margin-bottom: 10px;
 }
 
-#essays > section.article-list {
+#essays section ul {
+  list-style-type: none;
+  margin: 0;
 }
 
-#essays > section.archives {
-	float: right;
-	width: 100px;
+#essays section.archives {
+  float: right;
+  margin: 15px;
 }
 
-#essays > section h1 {
-	font-size: 100%;
-	margin-bottom: 10px;
+#essays section.archives ul {
+  margin-bottom: 15px;
+  margin-left: 10px;
 }
 
-#essays > section ul {
-	margin-bottom: 10px;
+#essays section.article-list {
+  margin: 15px;
+  margin-right: 150px;
 }
 
-#essays > .article-list ul {
-	margin-left: 0;
-}
-
-#essays > .article-list li {
-	list-style: none;
-	margin-bottom: 10px;
+#essays section.article-list li {
+  margin-bottom: 10px;
 }
 
 #contact {

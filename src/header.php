@@ -76,14 +76,14 @@
                 About me.
               </a>
             </li>
-	    <li id='portfolio-link'>
-              <a href="portfolio.php" class="portfolio-link">
-                Portfolio.
-              </a>
-            </li>
             <li id='essays-link'>
               <a href="essays.php" class="essays-link">
                 Essays.
+              </a>
+            </li>
+            <li id='portfolio-link'>
+              <a href="portfolio.php" class="portfolio-link">
+                Portfolio.
               </a>
             </li>
             <li id='contact-link'>
