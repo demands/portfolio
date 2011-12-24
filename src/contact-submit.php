@@ -19,6 +19,10 @@ $messages = array(
   'captcha' => array(
     'details' => array('error', 'captcha'),
     'text' => 'Oops, that\'s not the right answer to the question I asked to make sure you weren\'t a robot. You can try again though. I\'ll give you a hint: My name is the title of this site. It\'s one word, and it starts with M.'
+  ),
+  'emptymessage' => array(
+    'details' => array('error', 'message'),
+    'text' => 'Sorry, I didn\'t get that... looks like your message was empty!'
   )
 );
 
@@ -64,7 +68,13 @@ function respond($js, $message) {
 // How do we respond to the user?
 $js = ($_POST['js'] == 'true');
 
-if( captcha_pass($_POST['captcha']) ) {
+if( !captcha_pass($_POST['captcha']) ) {
+  respond($js, $messages['captcha']);
+}
+elseif( empty($_POST['message']) ) {
+  respond($js, $messages['emptymessage']);
+}
+else {
   $response = save_message($db, $_POST['message'], $_SERVER['REMOTE_ADDR']);
   if($response == TRUE) {
     respond($js, $messages['success']);
@@ -74,8 +84,5 @@ if( captcha_pass($_POST['captcha']) ) {
     $message['error'] = $response;
     respond($js, $messages['db']);
   }
-}
-else {
-  respond($js, $messages['captcha']);
 }
 

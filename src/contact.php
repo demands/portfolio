@@ -1,4 +1,5 @@
 
+<?php $js[] = "contact.js"; ?>
 <?php require "header.php"; ?>
 
 <section id="contact">
@@ -6,8 +7,7 @@
     <h1>Send me a message.</h1>
     <h2>What can I do for you?</h2>
   </hgroup>
-  <form action=contact method=post>
-    <label for=message>Type your message:</label>
+  <form method=post>
     <?php
       if(isset($contact_message)) {
 
@@ -21,13 +21,12 @@
         print "<p class=\"$classes response\">";
         print $contact_message['text'];
         print "</p>";
-        print "<textarea name=\"message\">";
-        print $_POST['message'];
-        print "</textarea>";
       }
-      else {
-        print "<textarea name=message class=message id=message></textarea>";
-      }
+
+      print "<label for=message>Your message for me goes here:</label>";
+      print "<textarea name=message>";
+      print $_POST['message'];
+      print "</textarea>";
 
       print "<label for=captcha>How many letters are in my first name?</label>";
 

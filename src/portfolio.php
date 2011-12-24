@@ -4,7 +4,7 @@
 <section id="portfolio">
   <hgroup>
     <h1>Portfolio</h1>
-    <h2>I built this stuff!</h2>
+    <h2>Below are a few of the things I've worked on, but <a href='http://github.com/demands'>my code on github is more interesting.</a></h2>
   </hgroup>
   <article>
     <header>

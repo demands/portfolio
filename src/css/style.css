@@ -125,6 +125,21 @@ body {
   background: #000;
 }
 
+.response {
+  border: 2px solid #ccc;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.response-error {
+  border-color: #f00;
+  color: #f00;
+}
+
+
+
 #container {
   background: #e0dbc8;
 }
@@ -414,11 +429,14 @@ body {
 }
 
 #contact form label {
-	
 }
 
 #contact form input {
 	display: block;
+}
+
+#contact form .error {
+  border: 2px solid #f00;
 }
 
 #contact form input.submit {

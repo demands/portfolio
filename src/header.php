@@ -7,11 +7,12 @@
 
   // Page title
   if(isset($title)) {
-    $title = "$title | Max Edmands, web developer";
+    $title = "$title | ";
   }
   else {
-    $title = "Max Edmands, web developer";
+    $title = "";
   }
+  $title .= "Max Edmands, web app developer";
 
 ?><!doctype html>
 <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
@@ -77,7 +78,7 @@
               </a>
             </li>
             <li id='essays-link'>
-              <a href="essays.php" class="essays-link">
+              <a href="http://blog.maxedmands.com" class="essays-link">
                 Essays.
               </a>
             </li>
