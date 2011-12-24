@@ -3,3 +3,4 @@
 .htaccess
 logs/*
 intermediate/*
+publish/*
